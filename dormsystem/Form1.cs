@@ -85,9 +85,32 @@ namespace dormsystem
 
         private void tsmidropuser_Click(object sender, EventArgs e)
         {
-            //打开添加用户窗体
-            DeleteUser dropuser = new DeleteUser();
-            dropuser.ShowDialog();
+
+            if (mainList.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("请先选中要删除的用户！");
+                return;
+            }
+
+            string username = mainList.SelectedItems[0].SubItems[1].Text.Trim();
+            string msg = "确定要删除 '" + username + "' 吗？";
+            if((int)MessageBox.Show(msg,"删除确认",MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation)!=1)
+            {
+               
+                return;
+            } 
+            string sql = string.Format("delete from userinfo where username = '{0}'", username
+                );
+            int res = DB.ExecuteSQL(sql);
+            if (res != -1)
+            {
+                MessageBox.Show("删除用户成功！");
+                this.DialogResult = DialogResult.Cancel;
+            }
+            else
+            {
+                MessageBox.Show("删除用户失败");
+            }
         }
 
         private void tsmiupdateuser_Click(object sender, EventArgs e)
@@ -110,6 +133,7 @@ namespace dormsystem
             }
             
         }
+
 
        
     }

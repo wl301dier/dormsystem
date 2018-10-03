@@ -33,9 +33,13 @@
             this.tsmiuser = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiadduser = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiuserlist = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmidropuser = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiupdateuser = new System.Windows.Forms.ToolStripMenuItem();
             this.房间管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiaddroom = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiroomlist = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmideleteroom = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiupdateroom = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmistudent = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiaddstudent = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmistudentlist = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,8 +58,6 @@
             this.tsbtnstudentlist = new System.Windows.Forms.ToolStripButton();
             this.tsbtnexit = new System.Windows.Forms.ToolStripButton();
             this.mainList = new System.Windows.Forms.ListView();
-            this.tsmidropuser = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiupdateuser = new System.Windows.Forms.ToolStripMenuItem();
             this.msmain.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -100,11 +102,27 @@
             this.tsmiuserlist.Text = "用户信息列表";
             this.tsmiuserlist.Click += new System.EventHandler(this.tsmiuserlist_Click);
             // 
+            // tsmidropuser
+            // 
+            this.tsmidropuser.Name = "tsmidropuser";
+            this.tsmidropuser.Size = new System.Drawing.Size(168, 24);
+            this.tsmidropuser.Text = "删除系统用户";
+            this.tsmidropuser.Click += new System.EventHandler(this.tsmidropuser_Click);
+            // 
+            // tsmiupdateuser
+            // 
+            this.tsmiupdateuser.Name = "tsmiupdateuser";
+            this.tsmiupdateuser.Size = new System.Drawing.Size(168, 24);
+            this.tsmiupdateuser.Text = "修改系统用户";
+            this.tsmiupdateuser.Click += new System.EventHandler(this.tsmiupdateuser_Click);
+            // 
             // 房间管理ToolStripMenuItem
             // 
             this.房间管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiaddroom,
-            this.tsmiroomlist});
+            this.tsmiroomlist,
+            this.tsmideleteroom,
+            this.tsmiupdateroom});
             this.房间管理ToolStripMenuItem.Name = "房间管理ToolStripMenuItem";
             this.房间管理ToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
             this.房间管理ToolStripMenuItem.Text = "房间管理";
@@ -114,12 +132,28 @@
             this.tsmiaddroom.Name = "tsmiaddroom";
             this.tsmiaddroom.Size = new System.Drawing.Size(168, 24);
             this.tsmiaddroom.Text = "添加新房间";
+            this.tsmiaddroom.Click += new System.EventHandler(this.tsmiaddroom_Click);
             // 
             // tsmiroomlist
             // 
             this.tsmiroomlist.Name = "tsmiroomlist";
             this.tsmiroomlist.Size = new System.Drawing.Size(168, 24);
             this.tsmiroomlist.Text = "房间信息列表";
+            this.tsmiroomlist.Click += new System.EventHandler(this.tsmiroomlist_Click);
+            // 
+            // tsmideleteroom
+            // 
+            this.tsmideleteroom.Name = "tsmideleteroom";
+            this.tsmideleteroom.Size = new System.Drawing.Size(168, 24);
+            this.tsmideleteroom.Text = "删除房间信息";
+            this.tsmideleteroom.Click += new System.EventHandler(this.tsmideleteroom_Click);
+            // 
+            // tsmiupdateroom
+            // 
+            this.tsmiupdateroom.Name = "tsmiupdateroom";
+            this.tsmiupdateroom.Size = new System.Drawing.Size(168, 24);
+            this.tsmiupdateroom.Text = "修改房间信息";
+            this.tsmiupdateroom.Click += new System.EventHandler(this.tsmiupdateroom_Click);
             // 
             // tsmistudent
             // 
@@ -226,6 +260,7 @@
             this.tsbtnaddroom.Name = "tsbtnaddroom";
             this.tsbtnaddroom.Size = new System.Drawing.Size(89, 24);
             this.tsbtnaddroom.Text = "添加房间";
+            this.tsbtnaddroom.Click += new System.EventHandler(this.tsbtnaddroom_Click);
             // 
             // tsbtnroomlist
             // 
@@ -234,6 +269,7 @@
             this.tsbtnroomlist.Name = "tsbtnroomlist";
             this.tsbtnroomlist.Size = new System.Drawing.Size(89, 24);
             this.tsbtnroomlist.Text = "房间列表";
+            this.tsbtnroomlist.Click += new System.EventHandler(this.tsbtnroomlist_Click);
             // 
             // tsbtnaddstudent
             // 
@@ -268,20 +304,6 @@
             this.mainList.TabIndex = 4;
             this.mainList.UseCompatibleStateImageBehavior = false;
             this.mainList.View = System.Windows.Forms.View.Details;
-            // 
-            // tsmidropuser
-            // 
-            this.tsmidropuser.Name = "tsmidropuser";
-            this.tsmidropuser.Size = new System.Drawing.Size(168, 24);
-            this.tsmidropuser.Text = "删除系统用户";
-            this.tsmidropuser.Click += new System.EventHandler(this.tsmidropuser_Click);
-            // 
-            // tsmiupdateuser
-            // 
-            this.tsmiupdateuser.Name = "tsmiupdateuser";
-            this.tsmiupdateuser.Size = new System.Drawing.Size(168, 24);
-            this.tsmiupdateuser.Text = "修改系统用户";
-            this.tsmiupdateuser.Click += new System.EventHandler(this.tsmiupdateuser_Click);
             // 
             // main
             // 
@@ -335,6 +357,8 @@
         private System.Windows.Forms.ListView mainList;
         private System.Windows.Forms.ToolStripMenuItem tsmidropuser;
         private System.Windows.Forms.ToolStripMenuItem tsmiupdateuser;
+        private System.Windows.Forms.ToolStripMenuItem tsmideleteroom;
+        private System.Windows.Forms.ToolStripMenuItem tsmiupdateroom;
     }
 }
 

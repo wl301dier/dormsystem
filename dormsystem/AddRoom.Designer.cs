@@ -49,7 +49,6 @@
             // 
             this.tbroomno.Location = new System.Drawing.Point(248, 86);
             this.tbroomno.Name = "tbroomno";
-            this.tbroomno.ReadOnly = true;
             this.tbroomno.Size = new System.Drawing.Size(149, 25);
             this.tbroomno.TabIndex = 1;
             // 

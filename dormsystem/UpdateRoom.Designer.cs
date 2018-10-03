@@ -58,6 +58,7 @@
             // 
             this.tbupdateroom.Location = new System.Drawing.Point(197, 71);
             this.tbupdateroom.Name = "tbupdateroom";
+            this.tbupdateroom.ReadOnly = true;
             this.tbupdateroom.Size = new System.Drawing.Size(166, 25);
             this.tbupdateroom.TabIndex = 1;
             // 

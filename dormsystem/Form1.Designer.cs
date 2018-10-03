@@ -297,10 +297,11 @@
             // 
             // mainList
             // 
+            this.mainList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainList.FullRowSelect = true;
-            this.mainList.Location = new System.Drawing.Point(0, 58);
+            this.mainList.Location = new System.Drawing.Point(0, 55);
             this.mainList.Name = "mainList";
-            this.mainList.Size = new System.Drawing.Size(666, 305);
+            this.mainList.Size = new System.Drawing.Size(666, 320);
             this.mainList.TabIndex = 4;
             this.mainList.UseCompatibleStateImageBehavior = false;
             this.mainList.View = System.Windows.Forms.View.Details;

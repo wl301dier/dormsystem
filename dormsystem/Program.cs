@@ -18,7 +18,7 @@ namespace dormsystem
             //先显示登录窗口，登录成功后在显示主窗体
             Login frmLogin = new Login();
             //以模态对话框的形式打开登录窗体
-            if (frmLogin.ShowDialog() == DialogResult.OK)//判断登录窗体是否返回OK
+            //if (frmLogin.ShowDialog() == DialogResult.OK)//判断登录窗体是否返回OK
             {
                 //启动主窗体
                 Application.Run(new main());

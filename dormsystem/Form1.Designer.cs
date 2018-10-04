@@ -43,6 +43,8 @@
             this.tsmistudent = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiaddstudent = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmistudentlist = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmidelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiupdate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiwindow = new System.Windows.Forms.ToolStripMenuItem();
             this.adduser = new System.Windows.Forms.ToolStripMenuItem();
             this.userlist = new System.Windows.Forms.ToolStripMenuItem();
@@ -159,7 +161,9 @@
             // 
             this.tsmistudent.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiaddstudent,
-            this.tsmistudentlist});
+            this.tsmistudentlist,
+            this.tsmidelete,
+            this.tsmiupdate});
             this.tsmistudent.Name = "tsmistudent";
             this.tsmistudent.Size = new System.Drawing.Size(111, 24);
             this.tsmistudent.Text = "住宿学生管理";
@@ -169,12 +173,28 @@
             this.tsmiaddstudent.Name = "tsmiaddstudent";
             this.tsmiaddstudent.Size = new System.Drawing.Size(168, 24);
             this.tsmiaddstudent.Text = "添加住宿学生";
+            this.tsmiaddstudent.Click += new System.EventHandler(this.tsmiaddstudent_Click);
             // 
             // tsmistudentlist
             // 
             this.tsmistudentlist.Name = "tsmistudentlist";
             this.tsmistudentlist.Size = new System.Drawing.Size(168, 24);
             this.tsmistudentlist.Text = "住宿学生列表";
+            this.tsmistudentlist.Click += new System.EventHandler(this.tsmistudentlist_Click);
+            // 
+            // tsmidelete
+            // 
+            this.tsmidelete.Name = "tsmidelete";
+            this.tsmidelete.Size = new System.Drawing.Size(168, 24);
+            this.tsmidelete.Text = "删除学生信息";
+            this.tsmidelete.Click += new System.EventHandler(this.tsmidelete_Click);
+            // 
+            // tsmiupdate
+            // 
+            this.tsmiupdate.Name = "tsmiupdate";
+            this.tsmiupdate.Size = new System.Drawing.Size(168, 24);
+            this.tsmiupdate.Text = "修改学生信息";
+            this.tsmiupdate.Click += new System.EventHandler(this.tsmiupdate_Click);
             // 
             // tsmiwindow
             // 
@@ -278,6 +298,7 @@
             this.tsbtnaddstudent.Name = "tsbtnaddstudent";
             this.tsbtnaddstudent.Size = new System.Drawing.Size(89, 24);
             this.tsbtnaddstudent.Text = "添加学生";
+            this.tsbtnaddstudent.Click += new System.EventHandler(this.tsbtnaddstudent_Click);
             // 
             // tsbtnstudentlist
             // 
@@ -286,6 +307,7 @@
             this.tsbtnstudentlist.Name = "tsbtnstudentlist";
             this.tsbtnstudentlist.Size = new System.Drawing.Size(89, 24);
             this.tsbtnstudentlist.Text = "学生列表";
+            this.tsbtnstudentlist.Click += new System.EventHandler(this.tsbtnstudentlist_Click);
             // 
             // tsbtnexit
             // 
@@ -360,6 +382,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiupdateuser;
         private System.Windows.Forms.ToolStripMenuItem tsmideleteroom;
         private System.Windows.Forms.ToolStripMenuItem tsmiupdateroom;
+        public System.Windows.Forms.ToolStripMenuItem tsmidelete;
+        public System.Windows.Forms.ToolStripMenuItem tsmiupdate;
     }
 }
 

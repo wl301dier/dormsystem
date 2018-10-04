@@ -83,5 +83,15 @@ namespace dormsystem
             
         }
 
+         public static DataTable GetDataTable(string sql) 
+         {
+             SqlConnection conn = CreateConnection();
+             SqlCommand cmd = new SqlCommand(sql, conn);
+             SqlDataAdapter adp = new SqlDataAdapter(cmd);
+             DataSet ds = new DataSet();
+             adp.Fill(ds,"Temp");
+             conn.Close();
+             return ds.Tables["Temp"];
+         }
     }
 }

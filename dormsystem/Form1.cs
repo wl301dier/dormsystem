@@ -99,25 +99,11 @@ namespace dormsystem
             this.mainList.Columns.Add("家庭住址");
             this.mainList.Items.Clear();
 
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "data source =.;user id = sa; password = 123456; initial catalog = dormitory";//连接字符串
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("无法连接数据库，请检查网络连接！");
-                //MessageBox.Show(ex.StackTrace);
-                return;
-            }
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "select * from studentinfo";
-            cmd.Connection = conn;
-            SqlDataReader dr;
+            SqlConnection conn = DB.CreateConnection();//创建连接
+            string sql = "select * from studentinfo";
+            SqlDataReader dr = DB.GetDataReader(sql, conn);
             //执行SQL语句
-            dr = cmd.ExecuteReader();
+            
             while (dr.Read()) 
             {
                 int id = 0;
@@ -143,7 +129,7 @@ namespace dormsystem
                 this.mainList.Items.Add(lvi);
             }
             dr.Close();
-            conn.Close();
+            DB.DestoryConnection(conn);
         }
 
         private void tsmiuserlist_Click(object sender, EventArgs e)
@@ -189,31 +175,10 @@ namespace dormsystem
 
         private void AddStudent() 
         {
-            //连接dormitory数据库
-            SqlConnection conn = new SqlConnection();//建立连接对象
-            conn.ConnectionString = "data source =.;user id = sa; password = 123456; initial catalog = dormitory";//连接字符串
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("打开数据库连接失败！");
-                return;
-            }
-
             string sql = string.Format("select roomid, roomno from roominfo");
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = sql;
-            cmd.Connection = conn;
-            SqlDataAdapter adp = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            adp.Fill(ds, "Temp");
-            conn.Close();
-
             //打开添加学生信息窗体
             AddStudent addstudent = new AddStudent();
-            addstudent.cbstdroomid.DataSource = ds.Tables["Temp"];
+            addstudent.cbstdroomid.DataSource = DB.GetDataTable(sql);
             addstudent.cbstdroomid.DisplayMember = "RoomNo";
             addstudent.cbstdroomid.ValueMember = "RoomID";
             addstudent.ShowDialog();
@@ -264,8 +229,7 @@ namespace dormsystem
                
                 return;
             } 
-            string sql = string.Format("delete from userinfo where username = '{0}'", username
-                );
+            string sql = string.Format("delete from userinfo where username = '{0}'", username);
             int res = DB.ExecuteSQL(sql);
             if (res != -1)
             {
@@ -356,17 +320,7 @@ namespace dormsystem
 
         private void tsmidelete_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "data source =.;user id = sa; password = 123456; initial catalog = dormitory";
-            try
-            {
-                conn.Open();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("数据库连接成功");
-            }
-
+            SqlConnection conn = DB.CreateConnection();
             if (mainList.SelectedItems.Count == 0)
             {
                 MessageBox.Show("请先选中要删除的房间！");
@@ -426,29 +380,10 @@ namespace dormsystem
                 updatestudent.cbsex.Text = sex;
                 updatestudent.tbage.Text = age;
                 updatestudent.cbclassname.Text = classname;
-
-                SqlConnection conn = new SqlConnection();
-                conn.ConnectionString = "data source =.;user id = sa; password = 123456; initial catalog = dormitory";
-                try
-                {
-                    conn.Open();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("数据库连接成功");
-                }
-                string sql = string.Format("select roomid, roomno from roominfo");
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = sql;
-                cmd.Connection = conn;
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                adp.Fill(ds, "Temp");
-                conn.Close();
-                updatestudent.cbroomid.DataSource = ds.Tables["Temp"];
+                string sql = string.Format("select roomid, roomno from roominfo"); 
+                updatestudent.cbroomid.DataSource = DB.GetDataTable(sql);
                 updatestudent.cbroomid.DisplayMember = "RoomNo";
                 updatestudent.cbroomid.ValueMember = "RoomID";
-
                 updatestudent.ShowDialog();
                 this.showStudent();
             }
